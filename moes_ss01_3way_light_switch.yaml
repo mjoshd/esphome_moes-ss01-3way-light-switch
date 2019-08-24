@@ -119,6 +119,14 @@ switch:
         return false;
       }
     turn_on_action:
-      - switch.toggle: relay
+        - if:
+            condition:
+              switch.is_off: ${device_name}
+            then:
+              - switch.toggle: relay
     turn_off_action:
-      - switch.toggle: relay
+        - if:
+            condition:
+              switch.is_on: ${device_name}
+            then:
+              - switch.toggle: relay
