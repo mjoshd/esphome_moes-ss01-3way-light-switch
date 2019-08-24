@@ -118,15 +118,16 @@ switch:
       } else {
         return false;
       }
+    # https://esphome.io/guides/automations.html#if-action
     turn_on_action:
         - if:
             condition:
-              switch.is_off: ${device_name}
+              binary_sensor.is_off: sensor
             then:
               - switch.toggle: relay
     turn_off_action:
         - if:
             condition:
-              switch.is_on: ${device_name}
+              binary_sensor.is_on: sensor
             then:
               - switch.toggle: relay
